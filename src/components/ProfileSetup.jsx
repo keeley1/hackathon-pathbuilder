@@ -4,8 +4,18 @@ const ProfileSetup = ({ onContinue }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [gap, setGap] = useState("");
+  const [industry, setIndustry] = useState("");
   const [experience, setExperience] = useState("");
   const [availability, setAvailability] = useState("");
+
+  const industryOptions = [
+    "Technology",
+    "Finance",
+    "Healthcare",
+    "Education",
+    "Retail",
+    "Other"
+  ];
 
   return (
     <div className="bg-white p-8 rounded shadow-md w-full max-w-xl">
@@ -42,6 +52,33 @@ const ProfileSetup = ({ onContinue }) => {
         </select>
       </div>
       <div className="mb-4">
+        <label className="block mb-1 font-medium">Industry experience</label>
+        <div className="flex flex-col gap-2">
+          {industryOptions.map(option => (
+            <label key={option} className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                value={option}
+                checked={industry.includes(option)}
+                onChange={e => {
+                  if (e.target.checked) {
+                    setIndustry([...industry, option]);
+                  } else {
+                    setIndustry(industry.filter(i => i !== option));
+                  }
+                }}
+              />
+              {option}
+            </label>
+          ))}
+        </div>
+        {industry.length > 0 && (
+          <div className="mt-2 text-sm text-gray-700">
+            <span className="font-medium">Selected:</span> {industry.join(", ")}
+          </div>
+        )}
+      </div>
+      <div className="mb-4">
         <label className="block mb-1 font-medium">Current experience</label>
         <select value={experience} onChange={e => setExperience(e.target.value)} className="w-full border rounded px-3 py-2">
           <option value="">Select..</option>
@@ -68,7 +105,7 @@ const ProfileSetup = ({ onContinue }) => {
           </label>
         </div>
       </div>
-      <button onClick={() => onContinue({ name, goal, experience, availability })} className="w-full bg-blue-600 text-white py-2 rounded font-semibold mt-2">Continue</button>
+      <button onClick={() => onContinue({ name, goal, industry, experience, availability })} className="w-full bg-blue-600 text-white py-2 rounded font-semibold mt-2">Continue</button>
     </div>
   );
 };
