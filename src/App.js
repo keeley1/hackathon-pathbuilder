@@ -23,7 +23,7 @@ function App() {
   if (!profileComplete) {
     MainContent = <ProfileSetup onContinue={handleContinue} />;
   } else if (activePage === "Dashboard") {
-    MainContent = <Dashboard />;
+    MainContent = <Dashboard name={profile.name}/>;
   } else if (activePage === "My Plan") {
     MainContent = <MyPlan />;
   } else {

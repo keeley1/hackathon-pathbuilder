@@ -10,7 +10,7 @@ const navItems = [
 
 const Sidebar = ({ active = "Dashboard", onNavigate }) => (
   <aside className="bg-sidebar h-full min-h-screen w-56 flex flex-col py-8 px-4 rounded-xl shadow-md">
-    <div className="mb-8 text-2xl font-extrabold tracking-widest text-primary">Navigating You</div>
+    <div className="mb-8 text-2xl font-extrabold tracking-widest text-primary">RelaunchHer</div>
     <nav className="flex flex-col gap-2">
       {navItems.map((item) => (
         <button

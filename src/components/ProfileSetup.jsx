@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 
 const ProfileSetup = ({ onContinue }) => {
+  const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
+  const [gap, setGap] = useState("");
   const [experience, setExperience] = useState("");
   const [availability, setAvailability] = useState("");
 
   return (
     <div className="bg-white p-8 rounded shadow-md w-full max-w-xl">
       <h2 className="text-2xl font-bold mb-4">Set up your profile</h2>
+      <div className="mb-4">
+        <label className="block mb-1 font-medium">Your name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+          placeholder="Enter your name"
+        />
+      </div>
       <div className="mb-4">
         <label className="block mb-1 font-medium">Career goals</label>
         <select value={goal} onChange={e => setGoal(e.target.value)} className="w-full border rounded px-3 py-2">
@@ -16,6 +28,17 @@ const ProfileSetup = ({ onContinue }) => {
           <option value="Senior Software Engineer">Senior Software Engineer</option>
           <option value="Engineering Lead">Engineering Lead</option>
           <option value="Product Manager">Product Manager</option>
+        </select>
+      </div>
+      <div className="mb-4">
+        <label className="block mb-1 font-medium">How many years have you been out of work?</label>
+        <select value={gap} onChange={e => setGap(e.target.value)} className="w-full border rounded px-3 py-2">
+          <option value="">Select..</option>
+          <option value="None">None</option>
+          <option value="Less than 1 year">Less than 1 year</option>
+          <option value="1-2 years">1-2 years</option>
+          <option value="3-5 years">3-5 years</option>
+          <option value="5+ years">5+ years</option>
         </select>
       </div>
       <div className="mb-4">
@@ -45,7 +68,7 @@ const ProfileSetup = ({ onContinue }) => {
           </label>
         </div>
       </div>
-      <button onClick={() => onContinue({ goal, experience, availability })} className="w-full bg-blue-600 text-white py-2 rounded font-semibold mt-2">Continue</button>
+      <button onClick={() => onContinue({ name, goal, experience, availability })} className="w-full bg-blue-600 text-white py-2 rounded font-semibold mt-2">Continue</button>
     </div>
   );
 };

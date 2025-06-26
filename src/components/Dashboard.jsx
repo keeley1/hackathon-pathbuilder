@@ -1,9 +1,11 @@
 import React from "react";
 
-const Dashboard = () => (
+const Dashboard = ({ name }) => (
   <div className="bg-card p-8 rounded-xl shadow-md w-full max-w-lg">
     <div className="flex items-center justify-between mb-4">
-      <h2 className="text-2xl font-bold text-text">dashboard</h2>
+      <h2 className="text-2xl font-bold text-text">
+        {name ? `${name}'s Dashboard` : "Dashboard"}
+      </h2>
       <a href="#" className="text-primary text-sm">See all</a>
     </div>
     <div className="mb-6">
