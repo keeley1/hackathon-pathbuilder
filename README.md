@@ -20,3 +20,8 @@ Once the project is running, navigate to: http://localhost:3000/. This should be
 
 
 To run without the backend running, comment out lines 37 - 44, 47 - 48, and lines 61 - 95 from Dashboard.jsx. This comments out the API call and all logic associated with it. Note that this will change the UI as this removes the tasks from the dashboard. You can also use an AI tool to help remove the API call and replace with dummy data.
+
+To stop the react app, navigate to the project in the terminal and press:
+```
+CTRL + C
+```
