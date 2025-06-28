@@ -7,7 +7,8 @@ module.exports = {
         colors: {
           primary: {
             DEFAULT: '#7C3AED', // purple
-            light: '#EDE9FE',   // light purple bg
+            light: '#EDE9FE',
+            dark: '#4A148C',
           },
           accent: {
             DEFAULT: '#F59E42', // orange

@@ -3,7 +3,9 @@ import Sidebar from "./components/Sidebar";
 import ProfileSetup from "./components/ProfileSetup";
 import Dashboard from "./components/Dashboard";
 import MyPlan from "./pages/MyPlan";
+import Settings from "./pages/Settings";
 import AccessibilitySettings from "./components/AccessibilitySettings";
+import LoadingPlan from "./components/LoadingPlan";
 import "./App.css";
 
 function App() {
@@ -13,19 +15,28 @@ function App() {
   const [font, setFont] = useState("");
   const [textSize, setTextSize] = useState(16);
   const [showAccessibility, setShowAccessibility] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState(false);
 
   const handleContinue = (data) => {
     setProfile(data);
-    setProfileComplete(true);
+    setLoadingPlan(true);
+    setTimeout(() => {
+      setProfileComplete(true);
+      setLoadingPlan(false);
+    }, 2200); // 2.2 seconds for effect
   };
 
   let MainContent;
-  if (!profileComplete) {
+  if (loadingPlan) {
+    MainContent = <LoadingPlan />;
+  } else if (!profileComplete) {
     MainContent = <ProfileSetup onContinue={handleContinue} />;
   } else if (activePage === "Dashboard") {
-    MainContent = <Dashboard name={profile.name}/>;
+    MainContent = <Dashboard name={profile?.name}  />;
   } else if (activePage === "My Plan") {
     MainContent = <MyPlan />;
+  } else if (activePage === "Settings") {
+    MainContent = <Settings />;
   } else {
     MainContent = <div className="p-8">Coming soon...</div>;
   }
